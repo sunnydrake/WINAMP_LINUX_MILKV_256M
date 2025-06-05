@@ -22,7 +22,17 @@ x optional) boot image and set time via date -s '2025-06-05 00:24:56' to current
 
 x) extract ubuntu rootfs archive to ./extract/ dir
 
-x) perform cp -R ./extract/bin/* /bin/&&cp -R ./extract/etc/* /etc/&&cp -R ./extract/lib/* /lib/&&cp -R ./extract/usr/* /usr/ &&cp -R ./extract/var/* /var/ 
+x) perform 
+
+cp -Rndf ./extract/bin/* /bin/
+
+cp -Rdnf ./extract/etc/* /etc/ 
+
+cp -Rdnf ./extract/lib/* /lib/ 
+
+cp -Rdnf ./extract/usr/* /usr/ 
+
+cp -Rndf ./extract/var/* /var/ 
 
 
 x optional) to add socks proxy run echo 'Acquire::socks::proxy "socks5h://localhost:1080/";\nAcquire::http::proxy "socks5h://localhost:1080/";\nAcquire::https::proxy "socks5h://localhost:1080/";' >  /etc/apt/apt.conf.d/22-socks-proxy
