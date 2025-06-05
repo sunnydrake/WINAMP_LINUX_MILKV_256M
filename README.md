@@ -34,6 +34,7 @@ cp -Rdnf ./extract/usr/* /usr/
 
 cp -Rndf ./extract/var/* /var/ 
 
+this will mess with /etc/resolv.conf and /mnt/system/blink.sh which prevent booting and usbnet ...fix it
 
 x optional) to add socks proxy run echo 'Acquire::socks::proxy "socks5h://localhost:1080/";\nAcquire::http::proxy "socks5h://localhost:1080/";\nAcquire::https::proxy "socks5h://localhost:1080/";' >  /etc/apt/apt.conf.d/22-socks-proxy
 
