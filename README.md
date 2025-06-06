@@ -6,6 +6,8 @@ WIP NOT STABLE YET! AT OWN RISC
 
 Steps:
 
+--- OS SYSTEM
+
 x) lets grab SDK V2 from https://github.com/milkv-duo/duo-buildroot-sdk-v2/releases/ note that you need riscv one not arm one.
 
 x) get a ubuntu archive from https://github.com/bassusteur/milkv-duo-ubuntu and download release rootfs
@@ -44,7 +46,6 @@ rm -R /var/cache&&mkdir /var/cache&&chmod -R 777 /var/cache&&
 
 if system is unbootable replace files in this dirs from SDK cp -R is replacing files! cp -Rn not.
 
-optional stuff to fix system apt --reinstall install apt coreutils dpkg findutils sysvinit-utils ubuntu-minimal rsyslog  dbus  udev  systemd-hwe-hwdb libpam-systemd:riscv64 networkd-dispatcher ubuntu-minimal ca-certificates systemd netplan.io systemd-timesyncd systemd-sysv libnss-systemd:riscv64
 
 x optional) to add socks proxy run echo 'Acquire::socks::proxy "socks5h://localhost:1080/";\nAcquire::http::proxy "socks5h://localhost:1080/";\nAcquire::https::proxy "socks5h://localhost:1080/";' >  /etc/apt/apt.conf.d/22-socks-proxy
 
@@ -52,7 +53,29 @@ x optional) relogin from main linux while runing microsocks via ssh -R 1080:loca
 
 x optional) test socks via nc -v -x localhost:1080 google.com 80
 
+x optional) stuff to fix system
+
+hostname milkv-duo
+
+apt update&&apt --reinstall install apt coreutils dpkg findutils sysvinit-utils ubuntu-minimal apt-utils whohas man init-system-helpers systemd systemd-sysv  systemd systemd-sysv init libpam-systemd  sysvinit-utils systemd-sysv sysfsutils cgroupfs-mount cgroup-tools autofs rsyslog  dbus  udev  systemd-hwe-hwdb libpam-systemd:riscv64 networkd-dispatcher ubuntu-minimal ca-certificates systemd netplan.io systemd-timesyncd systemd-sysv libnss-systemd:riscv64
+
+sudo apt remove --allow-remove-essential systemd systemd-sysv init
+
+ln -s /bin/busybox /sbin/init 
+
+apt --reinstall install ifupdown
+
+
+
+
+
+ 
+
 x) perform apt update&&apt upgrade
+
+---- DISPLAY
+
+
 
 TODO:
 
@@ -74,3 +97,13 @@ Add bluetooth(+wifi?) connection via USB or other bus (usb adapter or esp 8266?)
 additinal links:
 
 https://milkv.io/docs/duo/getting-started/download
+
+https://gitverse.ru/milkv-duo/duo-examples
+
+https://github.com/waveshareteam/LCD-show
+
+https://github.com/juliannojungle/gc9a01-overlay
+
+https://github.com/raspberrypi/linux/tree/rpi-5.15.y/arch/arm/boot/dts/overlays
+
+
