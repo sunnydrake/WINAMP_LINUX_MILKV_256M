@@ -34,7 +34,7 @@ cp -Rdnf ./extract/usr/* /usr/
 
 cp -Rndf ./extract/var/* /var/ 
 
-this will mess with /etc/resolv.conf and /mnt/system/blink.sh which prevent booting and usbnet ...fix it
+if system is unbootable replace files in this dirs from SDK cp -R is replacing files! cp -Rn not.
 
 x optional) to add socks proxy run echo 'Acquire::socks::proxy "socks5h://localhost:1080/";\nAcquire::http::proxy "socks5h://localhost:1080/";\nAcquire::https::proxy "socks5h://localhost:1080/";' >  /etc/apt/apt.conf.d/22-socks-proxy
 
@@ -42,7 +42,7 @@ x optional) relogin from main linux while runing microsocks via ssh -R 1080:loca
 
 x optional) test socks via nc -v -x localhost:1080 google.com 80
 
-x) perform apt update&&apt upgrade
+x) perform rm -R /var/cache&&mkdir /var/cache&&chmod -R 777 /var/cache&&groupadd -g 105 -r messagebus&&groupadd -g 104 -r crontab&&apt update&&apt upgrade
 
 TODO:
 
