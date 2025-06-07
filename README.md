@@ -75,6 +75,24 @@ x) perform apt update&&apt upgrade
 
 ---- DISPLAY
 
+*milkV
+
+pin 36 VCC 3.3V out
+
+pin 38 GND
+
+pin 12 CS SPI2_CS_X O SD1_D3 1
+
+pin 9  SCL SPI2_SCK O SD1_CLK
+
+pin 10 DC SPI2_SDO I/O SD1_CMD 
+
+pin 11 SDA SPI2_SDI I SD1_D0?
+
+
+
+*GC9A01 1.28 240x240 4 WIRE SPI round TFT 
+pins VCC,GND,SCL(SCK (Serial Clock)),SDA(Serial Data),DC(data/command),CS(chip select),RST(reset?)
 
 
 TODO:
