@@ -73,15 +73,26 @@ apt --reinstall install ifupdown
 
 x) perform apt update&&apt upgrade
 
+x) unfortunetly SPIDEV is configured incorrectly so we need to recompile sdk v2 with this options
+
+sudo apt install -y pkg-config build-essential ninja-build automake autoconf libtool wget curl git gcc libssl-dev bc squashfs-tools android-sdk-libsparse-utils jq scons parallel python3-distlib  tree python3-dev python3-pip device-tree-compiler ssh cpio fakeroot libncurses-dev flex bison libncurses5-dev genext2fs rsync unzip dosfstools mtools tcl openssh-client cmake expect python-is-python3 python3-jinja2
+
+build SLIB
+
+ git clone https://github.com/SLIBIO/SLib.git&&cd SLib&&./setup-path
+
+python3-distutils replaced with python3-distlib 
+
+
+
+
 ---- DISPLAY
 
 *milkV
 
 pin 36 VCC 3.3V out
 
-pin 38 GND
-
-
+pin 38 GND 
 
 pin 9  GNUM 375 SCL SPI2_SCK O SD1_CLK
 
@@ -91,7 +102,11 @@ pin 11 GNUM 373 SDA SPI2_SDI I SD1_D0?
 
 pin 12 GNUM 370 CS SPI2_CS_X O SD1_D3 1
 
-*GC9A01 1.28 240x240 4 WIRE SPI round TFT 
+pin RST 21? 
+
+pin DC 22???
+
+*GC9A01 1.28 240x240  16-bit color 4 WIRE SPI  round TFT 
 pins VCC,GND,SCL(SCK (Serial Clock)),SDA(Serial Data),DC(data/command),CS(chip select),RST(reset?)
 
 
