@@ -79,9 +79,10 @@ sudo apt install -y pkg-config build-essential ninja-build automake autoconf lib
 
 build SLIB
 
- git clone https://github.com/SLIBIO/SLib.git&&cd SLib&&./setup-path
+ git clone https://github.com/SLIBIO/SLib.git&&cd SLib&&./setup-path&&cd .. #python3-distutils replaced with python3-distlib 
 
-python3-distutils replaced with python3-distlib 
+git clone https://github.com/milkv-duo/duo-buildroot-sdk-v2.git --depth=1&&wget https://github.com/milkv-duo/duo-buildroot-sdk-v2/releases/download/dl/dl.tar
+&&tar xvf ./dl.tar -C ./duo-buildroot-sdk-v2/buildroot/&&cd duo-buildroot-sdk-v2/&&./build.sh
 
 
 
@@ -101,6 +102,8 @@ pin 10 GNUM 374 DC SPI2_SDO I/O SD1_CMD
 pin 11 GNUM 373 SDA SPI2_SDI I SD1_D0?
 
 pin 12 GNUM 370 CS SPI2_CS_X O SD1_D3 1
+
+pin porte 4 GWR RST
 
 pin RST 21? 
 
@@ -131,7 +134,7 @@ additinal links:
 
 https://milkv.io/docs/duo/getting-started/download
 
-https://gitverse.ru/milkv-duo/duo-examples
+https://github.com/milkv-duo/duo-examples
 
 https://github.com/waveshareteam/LCD-show
 
