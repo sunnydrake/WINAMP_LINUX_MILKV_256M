@@ -84,6 +84,13 @@ build SLIB
 git clone https://github.com/milkv-duo/duo-buildroot-sdk-v2.git --depth=1&&wget https://github.com/milkv-duo/duo-buildroot-sdk-v2/releases/download/dl/dl.tar
 &&tar xvf ./dl.tar -C ./duo-buildroot-sdk-v2/buildroot/&&cd duo-buildroot-sdk-v2/&&./build.sh
 
+duo-buildroot-sdk-v2/cvi_mpi/modules/audio/audio.mk
+from
+USE_ALSA = no
+USE_TINYALSA = yes
+to
+USE_ALSA = yes
+USE_TINYALSA = no
 
 
 
@@ -110,6 +117,7 @@ pin RST 21?
 pin DC 22???
 
 *GC9A01 1.28 240x240  16-bit color 4 WIRE SPI  round TFT 
+
 pins VCC,GND,SCL(SCK (Serial Clock)),SDA(Serial Data),DC(data/command),CS(chip select),RST(reset?)
 
 
