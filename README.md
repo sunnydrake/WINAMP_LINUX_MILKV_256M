@@ -75,14 +75,14 @@ x) perform apt update&&apt upgrade
 
 x) unfortunetly SPIDEV is configured incorrectly so we need to recompile sdk v2 with this options
 
-sudo apt install -y pkg-config build-essential ninja-build automake autoconf libtool wget curl git gcc libssl-dev bc squashfs-tools android-sdk-libsparse-utils jq scons parallel python3-distlib  tree python3-dev python3-pip device-tree-compiler ssh cpio fakeroot libncurses-dev flex bison libncurses5-dev genext2fs rsync unzip dosfstools mtools tcl openssh-client cmake expect python-is-python3 python3-jinja2
+sudo apt install -y pkg-config build-essential ninja-build automake autoconf libtool wget curl git gcc libssl-dev bc squashfs-tools android-sdk-libsparse-utils jq scons parallel python3-distlib  tree python3-dev python3-pip device-tree-compiler ssh cpio fakeroot libncurses-dev flex bison libncurses5-dev genext2fs rsync unzip dosfstools mtools tcl openssh-client cmake expect python-is-python3 python3-jinja2 xxd
 
 build SLIB
 
  git clone https://github.com/SLIBIO/SLib.git&&cd SLib&&./setup-path&&cd .. #python3-distutils replaced with python3-distlib 
 
 git clone https://github.com/milkv-duo/duo-buildroot-sdk-v2.git --depth=1&&wget https://github.com/milkv-duo/duo-buildroot-sdk-v2/releases/download/dl/dl.tar
-&&tar xvf ./dl.tar -C ./duo-buildroot-sdk-v2/buildroot/&&cd duo-buildroot-sdk-v2/&&./build.sh
+&&tar xvf ./dl.tar -C ./duo-buildroot-sdk-v2/buildroot/&&cd duo-buildroot-sdk-v2/&&./build.sh milkv-duo256m-musl-riscv64-sd
 
 duo-buildroot-sdk-v2/cvi_mpi/modules/audio/audio.mk
 from
@@ -92,6 +92,24 @@ to
 USE_ALSA = yes
 USE_TINYALSA = no
 
+fix compilation 
+cvi_mpi/modules/audio/Makefile
+PREBUILD_LIBDIR = ./prebuilt/$(TARGET_MACHINE) 
+
+error with alsa 
+*** No rule to make target 'src/cvi_audio_interface.c', needed by '/mnt/512G/builds/duo-buildroot-sdk-v2/cvi_mpi/lib/libcvi_audio.a'.  Stop.
+
+build/env_setup_milkv.sh:519
+function build_pqtool_server()
+{(
+  return;
+
+
+  DTS compile
+preprocess
+
+   dtcpp -I ./u-boot-2021.10/arch/riscv/dts/ -I ./u-boot-2021.10/include/ ./build/boards/cv181x/sg2002_milkv_duo256m_musl_riscv64_sd/dts_riscv/sg2002_milkv_d
+uo256m_musl_riscv64_sd.dts  ./build/boards/cv181x/sg2002_milkv_duo256m_musl_riscv64_sd/dts_riscv/sg2002_milkv_duo256m_musl_riscv64_sd.dts.preprocessed
 
 
 ---- DISPLAY
