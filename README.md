@@ -111,6 +111,32 @@ preprocess
    dtcpp -I ./u-boot-2021.10/arch/riscv/dts/ -I ./u-boot-2021.10/include/ ./build/boards/cv181x/sg2002_milkv_duo256m_musl_riscv64_sd/dts_riscv/sg2002_milkv_d
 uo256m_musl_riscv64_sd.dts  ./build/boards/cv181x/sg2002_milkv_duo256m_musl_riscv64_sd/dts_riscv/sg2002_milkv_duo256m_musl_riscv64_sd.dts.preprocessed
 
+enable ubuntu systemd
+
+/duo-buildroot-sdk-v2/build/boards/cv181x/sg2000_milkv_duos_musl_riscv64_sd/sg2000_milkv_duos_musl_riscv64_sd_defconfig add at end
+
+CONFIG_CGROUPS=y
+CONFIG_CGROUP_FREEZER=y
+CONFIG_CGROUP_PIDS=y
+CONFIG_CGROUP_DEVICE=y
+CONFIG_CPUSETS=y
+CONFIG_PROC_PID_CPUSET=y
+CONFIG_CGROUP_CPUACCT=y
+CONFIG_PAGE_COUNTER=y
+CONFIG_MEMCG=y
+CONFIG_CGROUP_SCHED=y
+CONFIG_NAMESPACES=y
+CONFIG_OVERLAY_FS=y
+CONFIG_AUTOFS4_FS=y
+CONFIG_SIGNALFD=y
+CONFIG_TIMERFD=y
+CONFIG_EPOLL=y
+CONFIG_IPV6=y
+CONFIG_FANOTIFY
+CONFIG_ZSMALLOC=y
+CONFIG_ZRAM=y
+
+
 
 ---- DISPLAY
 
